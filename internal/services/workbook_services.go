@@ -42,5 +42,5 @@ func (wb *WorkBookRecordService) RetrieveSharedWorkBookRecords(userID string) ([
 
 // AddNewUserToWorkBook adds a new user to the shared workbook in the repository.
 func (wb *WorkBookRecordService) AddNewUserToWorkBook(accountID string, data views.UpdateSharedWithRequest) error {
-	return wb.workbookRepository.AddSharedUser(accountID, data)
+	return wb.workbookRepository.SharedWorkBookWith(data)
 }
