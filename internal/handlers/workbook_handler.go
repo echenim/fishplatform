@@ -8,12 +8,26 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-// WorkBookHandler handles the HTTP requests for workbook operations
+// WorkBookHandler handles the HTTP requests for workbook operations.
+// It encapsulates the business logic necessary to process requests related to workbooks,
+// such as sharing a workbook with other users. This struct holds a reference to a service
+// that actually implements the business logic.
 type WorkBookHandler struct {
-	service *services.WorkBookRecordService
+	service *services.WorkBookRecordService // Pointer to WorkBookRecordService that provides workbook services.
 }
 
-// NewWorkBookHandler creates a new instance of WorkBookHandler
+// NewWorkBookHandler creates a new instance of WorkBookHandler. This function is a constructor
+// used to initialize a WorkBookHandler with a specific instance of WorkBookRecordService.
+// The service passed to this function is expected to contain all the business logic for
+// handling operations on workbook records, such as adding users, removing users, or updating workbook details.
+//
+// Parameters:
+// _service - A pointer to an instance of WorkBookRecordService which will be used to handle
+//
+//	business logic related to workbook operations.
+//
+// Returns:
+// *WorkBookHandler - A pointer to the newly created instance of WorkBookHandler.
 func NewWorkBookHandler(_service *services.WorkBookRecordService) *WorkBookHandler {
 	return &WorkBookHandler{service: _service}
 }
